@@ -6,28 +6,19 @@ use CodeIgniter\Model;
 
 class Event_model extends Model
 {
-    protected $table         = 'berita';
-    protected $primaryKey     = 'id_berita';
+    protected $table         = 'events';
+    protected $primaryKey     = 'id_event';
     protected $allowedFields = [
-        'id_user',
-        'id_kategori',
-        'slug_berita',
-        'judul_berita',
-        'isi',
-        'status_berita',
-        'jenis_berita',
-        'keywords',
-        'gambar',
-        'tanggal_post'
+        'id_jenis_event', 'penyedia_event', 'nama_event', 'deskripsi_event', 'fasilitas_event',
+        'tanggal_mulai', 'tanggal_selesai', 'provinsi_event', 'kota_event', 'lokasi_event', 'harga_event', 'date_up',
+        'blokir', 'has_event', 'gambar'
     ];
 
     // Listing
     public function listing()
     {
-        $this->select('berita.*, kategori.nama_kategori');
-        $this->join('kategori', 'kategori.id_kategori = berita.id_kategori');
-        // $this->where('status_berita','Publish');
-        $this->orderBy('id_berita', 'DESC');
+        $this->select('*');
+        $this->orderBy('date_create', 'DESC');
         $query = $this->get();
         return $query->getResultArray();
     }

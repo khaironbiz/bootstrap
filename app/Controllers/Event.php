@@ -3,6 +3,11 @@
 namespace App\Controllers;
 // Load model
 use App\Models\Event_model;
+use App\Models\Jenis_model;
+use App\Models\Profesi_model;
+use App\Models\Level_harga_model;
+use App\Models\Kota_model;
+use App\Models\Provinsi_model;
 
 class Event extends BaseController
 {
@@ -10,14 +15,17 @@ class Event extends BaseController
     {
         $session             = \Config\Services::session();
         helper('text');
-        //$model 				= new Event_model();
-        //$event 			= $model->listing();
-        $data                 = array(
-            'title'        => 'Event List',
-            //'berita'	=> $event,
-            'session'    => $session,
-            'content'    => 'product/index'
+        $model             = new Event_model();
+        $event             = $model->listing();
+        $data           = array(
+            'title'         => 'Event List',
+            'event'         => $event,
+            'session'       => $session,
+            'content'       => 'product/index'
         );
+        if (empty($data['event'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        };
         return view('layout/wrapper', $data);
     }
     public function product()
@@ -27,14 +35,12 @@ class Event extends BaseController
     }
     public function detail()
     {
-        $session             = \Config\Services::session();
         helper('text');
         //$model 				= new Event_model();
         //$event 			= $model->listing();
         $data                 = array(
             'title'        => 'Event Detail',
             //'berita'	=> $event,
-            'session'    => $session,
             'content'    => 'product/detail'
         );
         return view('layout/wrapper', $data);
@@ -53,83 +59,89 @@ class Event extends BaseController
         );
         return view('layout/wrapper', $data);
     }
+
+    public function list()
+    {
+        helper('text');
+        $model_event    = new Event_model();
+        $event          = $model_event->listing();
+        $data           = array(
+            'title'     => 'Daftar Event',
+            'event'     => $event,
+            'content'   => 'product/list'
+        );
+        return view('layout/wrapper', $data);
+    }
+    // get id prov
+    function kota($id_prov)
+    {
+        // $category_id = $this->input->post('id', TRUE);
+        // $data = $this->product_model->get_sub_category($category_id)->result();
+        // echo json_encode($data);
+        //$id_prov    = $this->request->getVar('provinsi_event');
+        $model_kota = new Kota_model();
+        $data       = $model_kota->getById($id_prov);
+        echo json_encode($data);
+    }
+
     public function add()
     {
         $session             = \Config\Services::session();
         helper('text');
-        //$model 				= new Event_model();
-        //$event 			= $model->listing();
-        $data                 = array(
-            'title'        => 'Input Event',
-            //'berita'	=> $event,
-            'session'    => $session,
-            'content'    => 'product/add'
-        );
-        return view('layout/wrapper', $data);
-    }
-    public function list()
-    {
-        $session             = \Config\Services::session();
-        helper('text');
-        //$model 				= new Event_model();
-        //$event 			= $model->listing();
-        $data                 = array(
-            'title'        => 'Daftar Even',
-            //'berita'	=> $event,
-            'session'    => $session,
-            'content'    => 'product/list'
+        $model_jenis        = new Jenis_model();
+        $jenis              = $model_jenis->listing();
+        $model_profesi      = new Profesi_model();
+        $profesi            = $model_profesi->listing();
+        $model_lh           = new Level_harga_model();
+        $level_harga        = $model_lh->listing();
+        $model_prov         = new Provinsi_model();
+        $provinsi           = $model_prov->listing();
+        $model_kota         = new Kota_model();
+        $kota               =  $model_kota->listing();
+        $data               = array(
+            'title'         => 'Input Event',
+            'jenis'         => $jenis,
+            'profesi'       => $profesi,
+            'level_harga'   => $level_harga,
+            'provinsi'      => $provinsi,
+            'kota'          => $kota,
+            'content'       => 'product/add'
         );
         return view('layout/wrapper', $data);
     }
     public function tambah()
     {
-        helper(['form', 'url']);
-        $image = \Config\Services::image();
-        $session = \Config\Services::session($config);
-        $mk         = new Kategori_model();
-        $kategori     = $mk->listing();
-
-        // Start validasi
+        helper(['form']);
         $validated =  $this->validate([
-            'judul_berita'     => 'required',
-            'isi'             => 'required',
-            'gambar'         => [
-                'uploaded[gambar]',
-                'mime_in[gambar,image/jpg,image/jpeg,image/gif,image/png]',
-                'max_size[gambar,4096]',
-            ],
+            'nama_event'        => 'required',
+            'id_jenis_event'    => 'required',
+            // 'gambar'         => [
+            //     'uploaded[gambar]',
+            //     'mime_in[gambar,image/jpg,image/jpeg,image/gif,image/png]',
+            // ],
         ]);
-
         if ($validated) {
             // Image upload
-            $avatar      = $this->request->getFile('gambar');
-            $namabaru     = $avatar->getRandomName();
-            $avatar->move(WRITEPATH . 'assets/img/event/', $namabaru);
-            // Masuk database
+            // $avatar      = $this->request->getFile('gambar');
+            // $namabaru     = $avatar->getRandomName();
+            // $avatar->move(WRITEPATH . '/assets/img/event/', $namabaru);
             $data = array(
-                'id_user'        => 1,
-                'id_kategori'    => $this->request->getVar('id_kategori'),
-                'slug_berita'    => strtolower(url_title($this->request->getVar('judul_berita'))),
-                'judul_berita'    => $this->request->getVar('judul_berita'),
-                'isi'            => $this->request->getVar('isi'),
-                'status_berita'    => $this->request->getVar('status_berita'),
-                'jenis_berita'    => $this->request->getVar('jenis_berita'),
-                'keywords'        => $this->request->getVar('keywords'),
-                'gambar'        => $namabaru,
-                'tanggal_post'    => date('Y-m-d H:i:s')
+                'id_jenis_event'    => $this->request->getVar('id_jenis_event'),
+                'nama_event'        => $this->request->getVar('nama_event'),
+                'deskripsi_event'   => $this->request->getVar('deskripsi_event'),
+                'fasilitas_event'   => $this->request->getVar('fasilitas_event'),
+                'tanggal_mulai'     => $this->request->getVar('tanggal_mulai'),
+                'tanggal_selesai'   => $this->request->getVar('tanggal_selesai'),
+                'harga_event'       => $this->request->getVar('harga_event'),
+                //'gambar'            => $namabaru,
+                'has_event'         => md5(time()),
             );
-            $model = new Berita_model();
-            $model->tambah($data);
-            $session->setFlashdata('sukses', 'Data telah ditambah');
-            return redirect()->to(base_url('admin/berita'));
+
+            $model_event    = new Event_model();
+            $tambah_event   = $model_event->tambah($data);
+            return redirect()->to(base_url('event/list'));
             // End masuk database
         }
-        $data = array(
-            'title'        => 'Tambah Berita',
-            'kategori'    => $kategori,
-            'content'    => 'admin/berita/tambah'
-        );
-        return view('admin/layout/wrapper', $data);
     }
 
     // Tambah

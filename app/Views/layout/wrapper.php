@@ -49,7 +49,7 @@
                         <a class="nav-link text-white" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="<?= base_url('home') ?>#about">About Us</a>
+                        <a class="nav-link text-white" href="<?= base_url('profesi') ?>">Profesi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="<?= base_url('event') ?>">Event</a>
@@ -87,9 +87,7 @@
                     ?>
                 </div>
                 <div class="col-md-4  mb-3">
-                    <h6>
-                        Lokasi
-                    </h6>
+                    <h6>Lokasi</h6>
                     <?php
                     $xxx = 1;
                     while ($xxx < 15) {
@@ -100,24 +98,33 @@
                     }
                     ?>
                 </div>
-                <div class="col-md-4 " style="font-size: 2rem; color: Tomato;">
-                    <h6>
-                        Sosial Media
-                    </h6>
-                    <i class="bi bi-youtube"></i>
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-twitter"></i>
-                    <i class="bi bi-instagram"></i>
+                <div class="col-md-4 ">
+                    <h6>Jenis Acara</h6>
+                    <span class="badge bg-secondary">Seminar</span>
+                    <span class="badge bg-secondary">Simposium</span>
+                    <span class="badge bg-secondary">Workshop</span>
+                    <span class="badge bg-secondary">Pelatihan</span>
                 </div>
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container">
-            <div class="row text-center">
-                <div class="col">
-                    <h4>ACARA KESEHATAN</h4>
+    <footer class="mt-3">
+        <div class="container-fluid">
+            <div class="row text-center mb-5">
+                <div class="col-md-4">
+                    <h5>Office</h5>
+                    <p>Jl. Kesehatan No.15, Cawang, Jakarta Timur</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>ACARA KESEHATAN</h5>
                     <p>Pusat Publikasi Kegiatan Ilmiah Seluruh Profesi Tenaga Kesehatan</p>
+                </div>
+                <div class="col-md-4" style="font-size: 2rem; color: Tomato;">
+                    <h5>Sosial Media</h5>
+                    <i class="bi bi-youtube"></i>
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-twitter"></i>
+                    <i class="bi bi-instagram"></i>
                 </div>
             </div>
         </div>

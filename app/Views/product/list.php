@@ -8,6 +8,7 @@
         </div>
         <div class="row">
             <div class="col">
+            <a class="btn btn-primary" href="<?= base_url('event/add')?>" role="button">Tambah Event</a>
                 <table id="table_id" class="table table-responsive text-white">
                     <thead>
                         <tr>
@@ -23,12 +24,12 @@
                     </thead>
                     <tbody>
                         <?php
-                        $x = 1;
-                        while ($x <= 120) {
+                        $x=1;
+                        foreach($event as $event){
                         ?>
                             <tr>
                                 <th scope="row"><?= $x ?></th>
-                                <td>Pelatihan BNLS</td>
+                                <td><?= $event['nama_event']?></td>
                                 <td>Himpunan Perawat Neurosains Indonesia</td>
                                 <td>Pelatihan</td>
                                 <td>Jakarta Timur</td>

@@ -2,62 +2,63 @@
     <div class="container">
         <div class="row text-center text-white">
             <div class="col">
-                <h2>INPUT PROFESI</h2>
-                <p>Tambah Profesi oleh Administrator</p>
+                <h2>EDIT PROFESI</h2>
+                <p>Edit Profesi oleh Administrator</p>
             </div>
         </div>
         <div class="row text-white mt-3">
             <div class="row justify-content-center" style="text-align: justify; font-size:smaller">
-                <form action="/profesi/tambah" method="POST">
+                <form action="/profesi/update" method="POST">
                 <?= csrf_field(); ?>
                     <div class="col-md-12">
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Nama Profesi</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-primary fw-bold" name="nama_profesi">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control text-primary fw-bold" name="nama_profesi" value="<?= $profesi['nama_profesi']?>">
+                                <input type="hidden" class="form-control text-primary fw-bold" name="has_profesi_kesehatan" value="<?= $profesi['has_profesi_kesehatan']?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Nama Organisasi Profesi</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-primary fw-bold" name="nama_op">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control text-primary fw-bold" name="nama_op" value="<?= $profesi['nama_op']?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Singkatan Organisasi Profesi</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-primary fw-bold" name="singkatan_op">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control text-primary fw-bold" name="singkatan_op" value="<?= $profesi['singkatan_op']?>"> 
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Ketua Organisasi Profesi</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-primary fw-bold" name="ketua_op">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control text-primary fw-bold" name="ketua_op" value="<?= $profesi['ketua_op']?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Masa Bakti</label>
-                            <div class="col-4">
-                                <input type="date" class="form-control text-primary" name="masa_bakti_awal">
+                            <div class="col-3">
+                                <input type="date" class="form-control text-primary" name="masa_bakti_awal" value="<?= $profesi['masa_bakti_awal']?>">
                             </div>
-                            <div class="col-5">
-                                <input type="date" class="form-control text-primary" name="masa_bakti_ahir">
+                            <div class="col-3">
+                                <input type="date" class="form-control text-primary" name="masa_bakti_ahir" value="<?= $profesi['masa_bakti_ahir']?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Website Organisasi Profesi</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-primary fw-bold" name="web_op">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control text-primary fw-bold" name="web_op" value="<?= $profesi['web_op']?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="nama" class="col-sm-3 col-form-label">Email Organisasi Profesi</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-primary fw-bold" name="email_op">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control text-primary fw-bold" name="email_op" value="<?= $profesi['email_op']?>">
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-warning text-white fw-bold">INPUT</button>
+                            <button type="submit" class="btn btn-warning text-white fw-bold">UPDATE</button>
                         </div>
                     </div>
                 </form>

@@ -15,7 +15,9 @@ class Profesi_model extends Model
         'ketua_op',
         'masa_bakti_awal',
         'masa_bakti_ahir',
-        'web_op'
+        'web_op',
+        'email_op',
+        'has_profesi_kesehatan'
     ];
 
     // Listing
@@ -40,27 +42,20 @@ class Profesi_model extends Model
     }
 
     // Detail
-    public function detail($id_berita)
+    public function detail($has_profesi_kesehatan)
     {
-        $this->select('berita.*, kategori.nama_kategori');
-        $this->join('kategori', 'kategori.id_kategori = berita.id_kategori');
-        $this->where(array(
-            'status_berita'    => 'Publish',
-            'id_berita'        => $id_berita
-        ));
+        $this->select('*');
+        $this->where('has_profesi_kesehatan', $has_profesi_kesehatan);
         $query = $this->get();
         return $query->getRowArray();
     }
 
     // Read
-    public function read($slug_berita)
+    public function anggota($has_profesi_kesehatan)
     {
-        $this->select('berita.*, kategori.nama_kategori');
-        $this->join('kategori', 'kategori.id_kategori = berita.id_kategori');
-        $this->where(array(
-            'status_berita'    => 'Publish',
-            'slug_berita'    => $slug_berita
-        ));
+        $this->select('*');
+        $this->join('users', 'users.id_profesi = profesi.id_profesi');
+        $this->where('has_profesi_kesehatan', $has_profesi_kesehatan);
         $query = $this->get();
         return $query->getRowArray();
     }
@@ -74,14 +69,14 @@ class Profesi_model extends Model
     // Edit
     public function edit($data)
     {
-        $this->where('id_berita', $data['id_berita']);
+        $this->where('has_profesi_kesehatan', $data['has_profesi_kesehatan']);
         $this->replace($data);
     }
 
     // Delete
-    public function hapus($id_berita)
+    public function hapus($has_profesi_kesehatan)
     {
-        $this->where('id_berita', $id_berita);
+        $this->where('has_profesi_kesehatan', $has_profesi_kesehatan);
         $this->delete();
     }
 }

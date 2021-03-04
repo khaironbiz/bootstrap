@@ -2,28 +2,26 @@
 
 namespace App\Controllers;
 // Load model
-use App\Models\Profesi_model;
+use App\Models\Level_harga_model;
 
-class Profesi extends BaseController
+class Levelharga extends BaseController
 {
     public function index()
     {
-        $session        = \Config\Services::session();
         helper('text');
-        $model             = new Profesi_model();
-        $profesi         = $model->listing();
+        $model          = new Level_harga_model();
+        $level_harga    = $model->listing();
         $data           = array(
             'title'         => 'Daftar Profesi Tenaga Kesehatan',
-            'profesi'        => $profesi,
-            'session'       => $session,
-            'content'       => 'profesi/index'
+            'level_harga'   => $level_harga,
+            'content'       => 'level_harga/index'
         );
-        if(empty($data['profesi'])){
+        if (empty($data['level_harga'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException();
         };
         return view('layout/wrapper', $data);
     }
-    
+
     public function add()
     {
         helper('text');
@@ -58,38 +56,37 @@ class Profesi extends BaseController
             $model->tambah($data);
             return redirect()->to(base_url('profesi'));
             // End masuk database
-        }else{
+        } else {
             return redirect()->to(base_url('profesi/add'));
         }
-        
     }
-    public function detail($has_profesi_kesehatan)
+    public function detail($has_level_harga)
     {
-       
+
         helper('text');
-        $model 	    = new Profesi_model();
-        $profesi    = $model->detail($has_profesi_kesehatan);
+        $model          = new Level_harga_model();
+        $level_harga    = $model->detail($has_level_harga);
         $data       = array(
-            'title'     => 'Detail Profesi ',
-            'profesi'	=> $profesi,
-            'content'   => 'profesi/detail'
+            'title'         => 'Detail Profesi ',
+            'level_harga'   => $level_harga,
+            'content'   => 'level_harga/detail'
         );
         return view('layout/wrapper', $data);
     }
     public function anggota($has_profesi_kesehatan)
     {
-       
+
         helper('text');
-        $model 	    = new Profesi_model();
+        $model         = new Profesi_model();
         $profesi    = $model->detail($has_profesi_kesehatan);
         $data       = array(
             'title'     => 'Detail Profesi ',
-            'profesi'	=> $profesi,
+            'profesi'    => $profesi,
             'content'   => 'product/detail'
         );
         return view('layout/wrapper', $data);
     }
-    
+
     public function edit($has_profesi_kesehatan)
     {
         helper('text');
@@ -125,18 +122,18 @@ class Profesi extends BaseController
             $model  = new Profesi_model();
             $update = $model->edit($data);
             return redirect()->to(base_url('profesi'));
-            
+
             //dd($data);
-            
+
         };
     }
     // Delete
-	public function delete($has_profesi_kesehatan)
-	{
-		
-		// End proteksi
-		$model 	    = new Profesi_model();
-		$profesi    = $model->hapus($has_profesi_kesehatan);
-		return redirect()->to(base_url('profesi'));
-	}
+    public function delete($has_level_harga)
+    {
+
+        // End proteksi
+        $model         = new Level_harga_model();
+        $level_harga   = $model->hapus($has_level_harga);
+        return redirect()->to(base_url('levelharga'));
+    }
 }
