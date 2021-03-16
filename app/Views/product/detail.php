@@ -34,7 +34,7 @@
                             <tr>
                                 <td>Penyelenggara</td>
                                 <td>:</td>
-                                <td>Himpunan Perawat Neurosains Indonesia</td>
+                                <td><?= $event['nama_penyedia']?></td>
                             </tr>
                             <tr>
                                 <td>Tanggal</td>
@@ -44,12 +44,32 @@
                             <tr>
                                 <td>Tempat</td>
                                 <td>:</td>
-                                <td>The Ritz Carlton Mega Kuningan Jakarta Selatan</td>
+                                <td><?= $event['lokasi_event']?></td>
                             </tr>
                             <tr>
                                 <td>Peserta</td>
                                 <td>:</td>
-                                <td>Dokter Spesialis Neurology, Dokter Umum, Mahasiswa Kedokteran, Perawat, Mahasiswa Keperawatan</td>
+                                <td>
+                                <?php
+                                $db = \Config\Database::connect();
+
+                                $query = $db->query("
+                                
+                                SELECT * FROM event_peserta 
+                                JOIN profesi_kesehatan on profesi_kesehatan.id_profesi_kesehatan=event_peserta.id_profesi
+                                WHERE event_peserta.id_events='$peserta'
+                                
+                                ");
+                                $results = $query->getResult();
+
+                                foreach ($results as $row)
+                                {
+                                    echo $row->nama_profesi." ";
+                                    
+                                }
+                                ?>
+                                
+                                </td>
                             </tr>
                             <tr>
                                 <td>Kapasitas</td>

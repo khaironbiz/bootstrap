@@ -30,12 +30,12 @@
                             <tr>
                                 <th scope="row"><?= $x ?></th>
                                 <td><?= $event['nama_event']?></td>
-                                <td>Himpunan Perawat Neurosains Indonesia</td>
-                                <td>Pelatihan</td>
-                                <td>Jakarta Timur</td>
-                                <td>2.500.000</td>
-                                <td></td>
-                                <td><a class="btn btn-warning btn-sm" href="#" role="button">Detail</a></td>
+                                <td><?= $event['nama_penyedia']?></td>
+                                <td><?= $event['nama_jenis_event']?></td>
+                                <td><?= $event['nama_kabupaten']?></td>
+                                <td><?= number_format($event['harga_event'])?></td>
+                                <td><img src="<?= base_url('/assets/img/event')."/".$event['gambar']?>" width="50">  </td>
+                                <td><a class="btn btn-warning btn-sm" href="<?= base_url('event/detail/')."/".$event['has_event']?>" role="button">Detail</a></td>
                             </tr>
                         <?php
                             $x++;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2021 at 01:45 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Generation Time: Mar 08, 2021 at 11:03 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,9 +52,10 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id_event`, `id_jenis_event`, `penyedia_event`, `nama_event`, `deskripsi_event`, `fasilitas_event`, `tanggal_mulai`, `tanggal_selesai`, `provinsi_event`, `kota_event`, `lokasi_event`, `harga_event`, `gambar`, `date_create`, `date_up`, `blokir`, `has_event`) VALUES
-(1, 0, 0, 'Basic Neurology Life Support', '', '', '0000-00-00', '0000-00-00', '', '', '', 0, '', '2021-03-03 09:57:25', '0000-00-00', 'N', ''),
-(2, 1, 0, 'Pelatihan Neuropediatrik', '<p>aksajshdh</p>\r\n', '<p>aklajshd</p>\r\n', '2021-03-01', '2021-03-04', '', '', '', 1500000, '', '2021-03-04 08:47:22', '0000-00-00', 'N', 'a08f72eb433223bca5af51ad22ade897'),
-(3, 1, 0, 'Pelatihan Neuropediatric', '<p>Pelatihan ini ditujukan kepada perawat yang praktik di area neurology, bedah saraf dan ruang anak, asuhan keperawatan pada anak yang mengalami masalah neurology tentunya harus menggunakan pendekatan neurology dan pediatrik, oleh karena itu kami mengajak sejawat perawat di seluruh indonesia untuk bergabung dalam acara pelatihan Neuropediatric.</p>\r\n\r\n<p>Pelatihan ini memiliki bobot 50 JPL terdiri dari 15 JPL klasikal, 30 JPL praktik dan 5 JPL penugasan.</p>\r\n', '<p>Fasilitas yang akan di dapat yaitu :</p>\r\n\r\n<ol>\r\n	<li>Sertifikat pelatihan dari PPSDM.</li>\r\n	<li>Sertifikat kehadiran dari RS Pusat Otak Nasional</li>\r\n	<li>Sertifikat keahlian dari DPP PPNI dan Himpunan Perawat Neurosains Indonesia.</li>\r\n	<li>Seminar KIT yang Cantik dan keren</li>\r\n	<li>Kesempatan mendapatkan doorprise yang menarik.</li>\r\n	<li>Voucer diskon pelatihan berikutnya senilai 150.000.</li>\r\n</ol>\r\n', '2021-03-01', '2021-03-01', '', '', '', 1750000, '', '2021-03-04 10:31:16', '0000-00-00', 'N', 'ad3f469a6546dbccc5e46cc21d27f225');
+(1, 2, 1, 'Basic Neurology Life Support', '', '', '0000-00-00', '0000-00-00', '32', '3209', '', 750000, '', '2021-03-08 04:03:36', '0000-00-00', 'N', 'adfdwrwfdxss'),
+(2, 1, 1, 'Pelatihan Neuropediatrik', '<p>aksajshdh</p>\r\n', '<p>aklajshd</p>\r\n', '2021-03-01', '2021-03-04', '92', '9209', '', 1500000, '', '2021-03-08 03:52:40', '0000-00-00', 'N', 'a08f72eb433223bca5af51ad22ade897'),
+(3, 1, 2, 'Pelatihan Neuropediatric', '<p>Pelatihan ini ditujukan kepada perawat yang praktik di area neurology, bedah saraf dan ruang anak, asuhan keperawatan pada anak yang mengalami masalah neurology tentunya harus menggunakan pendekatan neurology dan pediatrik, oleh karena itu kami mengajak sejawat perawat di seluruh indonesia untuk bergabung dalam acara pelatihan Neuropediatric.</p>\r\n\r\n<p>Pelatihan ini memiliki bobot 50 JPL terdiri dari 15 JPL klasikal, 30 JPL praktik dan 5 JPL penugasan.</p>\r\n', '<p>Fasilitas yang akan di dapat yaitu :</p>\r\n\r\n<ol>\r\n	<li>Sertifikat pelatihan dari PPSDM.</li>\r\n	<li>Sertifikat kehadiran dari RS Pusat Otak Nasional</li>\r\n	<li>Sertifikat keahlian dari DPP PPNI dan Himpunan Perawat Neurosains Indonesia.</li>\r\n	<li>Seminar KIT yang Cantik dan keren</li>\r\n	<li>Kesempatan mendapatkan doorprise yang menarik.</li>\r\n	<li>Voucer diskon pelatihan berikutnya senilai 150.000.</li>\r\n</ol>\r\n', '2021-03-01', '2021-03-01', '52', '5203', '', 1750000, '', '2021-03-08 03:52:36', '0000-00-00', 'N', 'ad3f469a6546dbccc5e46cc21d27f225'),
+(4, 1, 1, 'anana', '<p>AFAF</p>\r\n', '<p>SAFSAFR</p>\r\n', '2021-03-08', '2021-03-08', '52', '5203', 'Hotel Ibis Cawang, Jakarta Timur', 125000, '1615170683_e36f5163761dc4788127.jpg', '2021-03-08 04:15:23', '0000-00-00', 'N', '1f2c323aaa2c8be7d7826a3597373166');
 
 -- --------------------------------------------------------
 
@@ -96,10 +97,18 @@ CREATE TABLE `event_level_harga` (
 
 CREATE TABLE `event_peserta` (
   `id` int(11) NOT NULL,
-  `id_event` int(11) NOT NULL,
+  `id_events` int(11) NOT NULL,
   `id_profesi` int(11) NOT NULL,
   `has_event_peserta` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `event_peserta`
+--
+
+INSERT INTO `event_peserta` (`id`, `id_events`, `id_profesi`, `has_event_peserta`) VALUES
+(1, 4, 14, 'adafad'),
+(2, 4, 5, '');
 
 -- --------------------------------------------------------
 
@@ -724,6 +733,14 @@ CREATE TABLE `penyedia` (
   `has_penyedia` varchar(155) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `penyedia`
+--
+
+INSERT INTO `penyedia` (`id_penyedia`, `id_user`, `nama_penyedia`, `badan_hukum`, `web_utama`, `email_penyedia`, `hp_penyedia`, `provinisi_penyedia`, `kota_penyedia`, `kab_penyedia`, `kecamatan_penyedia`, `kel_penyedia`, `alamat_penyedia`, `kode_merchant`, `nama_project`, `url_project`, `url_call_back`, `api_key_duitku`, `nama_pemilik_penyedia`, `ktp_pemilik_penyedia`, `bank`, `no_rekening`, `nama_rekening`, `date_create`, `has_penyedia`) VALUES
+(1, 1, 'Himpunan Perawat Neurosains Indonesia', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2021-03-08 03:36:52', ''),
+(2, 2, 'DPK PPNI RSPON', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2021-03-08 03:43:54', '');
+
 -- --------------------------------------------------------
 
 --
@@ -882,7 +899,7 @@ ALTER TABLE `provinsi`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `event_harga`
@@ -900,7 +917,7 @@ ALTER TABLE `event_level_harga`
 -- AUTO_INCREMENT for table `event_peserta`
 --
 ALTER TABLE `event_peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `event_poster`
@@ -924,7 +941,7 @@ ALTER TABLE `level_harga`
 -- AUTO_INCREMENT for table `penyedia`
 --
 ALTER TABLE `penyedia`
-  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `profesi_kesehatan`

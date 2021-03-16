@@ -8,7 +8,7 @@
         </div>
         <div class="row text-white mt-3">
             <div class="row justify-content-center" style="text-align: justify; font-size:smaller">
-                <form action="/profesi/update" method="POST">
+                <form action="/profesi/update/<?= $profesi['id_profesi_kesehatan']?>" method="POST">
                 <?= csrf_field(); ?>
                     <div class="col-md-12">
                         <div class="mb-3 row">

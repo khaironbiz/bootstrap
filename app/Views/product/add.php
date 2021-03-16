@@ -8,7 +8,7 @@
         </div>
 
         <div class="row text-white justify-content-center">
-            <form action="/event/tambah" method="POST">
+            <form action="/event/tambah" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="col-md-12">
                     <div class="mb-3 row">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-sm-5">
                             <select class="form-control" id="sub_category" name="kota_event" required>
-                                <option value="">No Selected</option>
+                                <option value="1">No Selected</option>
                             </select>
                         </div>
                     </div>
@@ -125,8 +125,8 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-warning text-white fw-bold">INPUT</button>
                     </div>
-                    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery-3.3.1.js' ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url() . '/assets/js/jquery-3.3.1.js' ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url() . '/assets/js/bootstrap.js' ?>"></script>
                     <script type="text/javascript">
                         $(document).ready(function() {
                             $('#category').change(function() {

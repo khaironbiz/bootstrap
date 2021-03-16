@@ -2,11 +2,24 @@
 
 namespace App\Controllers;
 // Load model
-//use App\Models\Event_model;
+use App\Models\User_model;
 
 class Home extends BaseController
 {
 	public function index()
+	{
+		$pager = \Config\Services::pager();
+		$model_user = new User_model();
+		$user 		= $model_user->listing();
+		$data		= array(
+			// 'title'		=> 'Daftar NIRA',
+			// 'user'		=> $user,
+			'user' 	=> $model_user->paginate(10),
+            'pager' 	=> $model_user->pager,
+		);
+		return view('layout/index', $data);
+	}
+	public function partner()
 	{
 		return view('layout/index');
 	}

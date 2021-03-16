@@ -46,7 +46,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto text-white fw-bold">
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="#home">Home</a>
+                        <a class="nav-link text-white" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="<?= base_url('profesi') ?>">Profesi</a>
