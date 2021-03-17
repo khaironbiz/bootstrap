@@ -33,12 +33,20 @@
 </head>
 
 <body>
+<?php
+$db         = \Config\Database::connect();
+$id         = 1;
+$query      = $db->query("SELECT * FROM web WHERE id='$id'");
+$results    = $query->getResult();
+$web        = $query->getRow();
+
+?>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="<?= base_url() ?>/assets/img/logo.png" alt="" width="50" class="d-inline-block align-top">
-                ACARA KESEHATAN.COM
+                <img src="<?= base_url() ?>/assets/img/<?= $web->logo ?>" alt="" width="50" class="d-inline-block align-top">
+                <?= $web->nama_web ?>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -113,18 +121,19 @@
             <div class="row text-center mb-5">
                 <div class="col-md-4">
                     <h5>Office</h5>
-                    <p>Jl. Kesehatan No.15, Cawang, Jakarta Timur</p>
+                    <p><?= $web->alamat_perusahaan ?></p>
                 </div>
                 <div class="col-md-4">
-                    <h5>ACARA KESEHATAN</h5>
-                    <p>Pusat Publikasi Kegiatan Ilmiah Seluruh Profesi Tenaga Kesehatan</p>
+                    <h5><?= $web->nama_perusahaan ?></h5>
+                    <p><?= $web->deskripsi_web ?></p>
+                    
                 </div>
-                <div class="col-md-4" style="font-size: 2rem; color: Tomato;">
+                <div class="col-md-4 sosial-media">
                     <h5>Sosial Media</h5>
-                    <i class="bi bi-youtube"></i>
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-twitter"></i>
-                    <i class="bi bi-instagram"></i>
+                    <a href="<?= $web->youtube?>"><i class="bi bi-youtube sosial-media"></i></a>
+                    <a href="<?= $web->facebook?>"><i class="bi bi-facebook sosial-media"></i></a>
+                    <a href="<?= $web->twitter?>"><i class="bi bi-twitter sosial-media"></i></a>
+                    <a href="<?= $web->instagram?>"><i class="bi bi-instagram sosial-media"></i></a>
                 </div>
             </div>
         </div>

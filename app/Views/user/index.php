@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
 
-                        <?php $no = 1 +(10*($currentPage-1));
+                        <?php $no = 1 +($per_page*($currentPage-1));
                         foreach ($user as $u) { ?>
                             <tr>
                                 <th scope="row"><?= $no ?></th>

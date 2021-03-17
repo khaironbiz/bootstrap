@@ -8,12 +8,13 @@ class Nira extends BaseController
 {
     public function index()
     {
+        $per_page       = "100";
         $currentPage    = $this->request->getVar('page_nira') ? $this->request->getVar('page_nira') : 1;
-		$model_user = new User_model();
-		$user 		= $model_user->listing();
-		$data		= array(
+		$model_user     = new User_model();
+		$data		    = array(
             'title'         => 'Daftar Anggota',
-			'user' 	        => $model_user->paginate(20,'nira'),
+            'per_page'      => $per_page,
+			'user' 	        => $model_user->paginate($per_page,'nira'),
             'pager' 	    => $model_user->pager,
             'currentPage'   => $currentPage,
             'content'       => 'user/index'
