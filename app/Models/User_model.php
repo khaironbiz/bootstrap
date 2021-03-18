@@ -20,6 +20,11 @@ class User_model extends Model
         $query = $this->get();
         return $query->getResultArray();
     }
+    //search
+    public function search($keyword)
+    {
+        return $this->table('nira')->like('nama', $keyword);
+    }
 
     // Listing home
     public function home()
@@ -34,10 +39,10 @@ class User_model extends Model
     }
 
     // Detail
-    public function detail($has_profesi_kesehatan)
+    public function detail($kode)
     {
         $this->select('*');
-        $this->where('has_profesi_kesehatan', $has_profesi_kesehatan);
+        $this->where('kode', $kode);
         $query = $this->get();
         return $query->getRowArray();
     }
@@ -61,14 +66,14 @@ class User_model extends Model
     // Edit
     public function edit($data)
     {
-        $this->where('has_profesi_kesehatan', $data['has_profesi_kesehatan']);
+        $this->where('kode', $data['kode']);
         $this->replace($data);
     }
 
     // Delete
-    public function hapus($has_profesi_kesehatan)
+    public function hapus($kode)
     {
-        $this->where('has_profesi_kesehatan', $has_profesi_kesehatan);
+        $this->where('kode', $kode);
         $this->delete();
     }
 }

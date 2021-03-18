@@ -7,6 +7,18 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-3">
+                <form action="" method="POST">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="keyword">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Cari</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <table class="table table-responsive text-white" style="font-size: smaller;">
                     <thead>
@@ -15,7 +27,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">NIRA</th>
                             <th scope="col">KTP</th>
-                            <th scope="col">Website</th>
+                            <th scope="col">Ruangan</th>
                             <th scope="col">Email</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -29,6 +41,9 @@
                                 <td><?= $u['nama']; ?></td>
                                 <td><?= $u['nira']; ?></td>
                                 <td><?= $u['ktp']; ?></td>
+                                <td><?= $u['ruangan']; ?></td>
+                                <td><?= $u['email']; ?></td>
+                                <td><a class="btn btn-sm btn-success" href="/anggota/detail/<?= $u['kode']?>" role="button">Detail</a></td>
                                 
                             </tr>
                         <?php $no++;

@@ -63,6 +63,9 @@ $web        = $query->getRow();
                         <a class="nav-link text-white" href="<?= base_url('event') ?>">Event</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="<?= base_url('anggota') ?>">Anggota</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="<?= base_url('home') ?>#contact">Contact</a>
                     </li>
 
