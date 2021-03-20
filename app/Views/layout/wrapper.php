@@ -16,10 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/fontawesome.min.css">
-    <!-- data table -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
-
 
 
 
@@ -29,18 +25,27 @@
     <!-- CK editor -->
     <script src="<?= base_url() ?>/assets/ckeditor/ckeditor.js"></script>
     <!-- data table -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <?php
+    if ($title == "Daftar Anggota") {
+    ?>
+        <!-- data table -->
+        <link href=" https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <?php
+    }
+    ?>
 </head>
 
 <body>
-<?php
-$db         = \Config\Database::connect();
-$id         = 1;
-$query      = $db->query("SELECT * FROM web WHERE id='$id'");
-$results    = $query->getResult();
-$web        = $query->getRow();
+    <?php
+    $db         = \Config\Database::connect();
+    $id         = 1;
+    $query      = $db->query("SELECT * FROM web WHERE id='$id'");
+    $results    = $query->getResult();
+    $web        = $query->getRow();
 
-?>
+    ?>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow fixed-top">
         <div class="container">
@@ -129,14 +134,14 @@ $web        = $query->getRow();
                 <div class="col-md-4">
                     <h5><?= $web->nama_perusahaan ?></h5>
                     <p><?= $web->deskripsi_web ?></p>
-                    
+
                 </div>
                 <div class="col-md-4 sosial-media">
                     <h5>Sosial Media</h5>
-                    <a href="<?= $web->youtube?>"><i class="bi bi-youtube sosial-media"></i></a>
-                    <a href="<?= $web->facebook?>"><i class="bi bi-facebook sosial-media"></i></a>
-                    <a href="<?= $web->twitter?>"><i class="bi bi-twitter sosial-media"></i></a>
-                    <a href="<?= $web->instagram?>"><i class="bi bi-instagram sosial-media"></i></a>
+                    <a href="<?= $web->youtube ?>"><i class="bi bi-youtube sosial-media"></i></a>
+                    <a href="<?= $web->facebook ?>"><i class="bi bi-facebook sosial-media"></i></a>
+                    <a href="<?= $web->twitter ?>"><i class="bi bi-twitter sosial-media"></i></a>
+                    <a href="<?= $web->instagram ?>"><i class="bi bi-instagram sosial-media"></i></a>
                 </div>
             </div>
         </div>

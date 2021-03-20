@@ -9,40 +9,50 @@
 
         <div class="row">
             <div class="col">
-                <table class="table table-responsive text-white" style="font-size: smaller;">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">NIRA</th>
-                            <th scope="col">KTP</th>
-                            <th scope="col">Ruangan</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php
-                        //$no = 1 + ($per_page * ($currentPage - 1));
-                        $no = 1;
-                        foreach ($user as $u) { ?>
+                <div class="table-responsive">
+                    <table id="example" class="table" style="width:100%">
+                        <thead>
                             <tr>
-                                <th scope="row"><?= $no ?></th>
-                                <td><?= $u['nama']; ?></td>
-                                <td><?= $u['nira']; ?></td>
-                                <td><?= $u['ktp']; ?></td>
-                                <td><?= $u['ruangan']; ?></td>
-                                <td><?= $u['email']; ?></td>
-                                <td><a class="btn btn-sm btn-success" href="/anggota/detail/<?= $u['kode'] ?>" role="button">Detail</a></td>
-
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">NIRA</th>
+                                <th scope="col">Pendidikan</th>
+                                <th scope="col">Ruangan</th>
+                                <th scope="col">Aksi</th>
                             </tr>
-                        <?php $no++;
-                        } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+
+                            <?php
+                            //$no = 1 + ($per_page * ($currentPage - 1));
+                            $no = 1;
+                            foreach ($user as $u) { ?>
+                                <tr>
+                                    <th scope="row"><?= $no ?></th>
+                                    <td><?= $u['nama']; ?></td>
+                                    <td><?= $u['nira']; ?></td>
+                                    <td><?= $u['pendidikan']; ?></td>
+                                    <td><?= $u['ruangan']; ?></td>
+                                    <td><a class="btn btn-sm btn-success" href="/anggota/detail/<?= $u['kode'] ?>" role="button">Detail</a></td>
+
+                                </tr>
+                            <?php $no++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
                 <?php //echo $pager->links('nira', 'user_paginate') 
                 ?>
+                <script>
+                    $(document).ready(function() {
+                        var table = $('#example').DataTable();
+
+                        $('#example tbody').on('click', 'tr', function() {
+                            var data = table.row(this).data();
+                            alert('You clicked on ' + data[0] + '\'s row');
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
