@@ -8,7 +8,7 @@ class User_model extends Model
 {
     protected $table         = 'nira';
     protected $allowedFields = [
-        'nama','ktp','npwp','sex','tl','ttl','agama','status','foto'
+        'nama', 'ktp', 'npwp', 'sex', 'tl', 'ttl', 'agama', 'status', 'foto'
     ];
 
     // Listing

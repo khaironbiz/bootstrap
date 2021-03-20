@@ -12,29 +12,27 @@ class Anggota extends BaseController
         $currentPage    = $this->request->getVar('page_nira') ? $this->request->getVar('page_nira') : 1;
         $keyword        = $this->request->getVar('keyword');
         $model          = new User_model();
-        if($keyword){
-            $model_user = $model->search($keyword);
-        }else{
-		    $model_user = new User_model();
-        }
-		$data		    = array(
+        $user       = $model->listing();
+
+        $data            = array(
             'title'         => 'Daftar Anggota',
-            'per_page'      => $per_page,
-			'user' 	        => $model_user->paginate($per_page,'nira'),
-            'pager' 	    => $model_user->pager,
-            'currentPage'   => $currentPage,
+            // 'per_page'      => $per_page,
+            // 'user'             => $model_user->paginate($per_page, 'nira'),
+            // 'pager'         => $model_user->pager,
+            // 'currentPage'   => $currentPage,
+            'user'          => $user,
             'content'       => 'user/index'
-		);
+        );
         return view('layout/wrapper', $data);
     }
     public function detail($kode)
     {
         helper('text');
-        $model 		    = new User_model();
-        $user 	        = $model->detail($kode);
+        $model             = new User_model();
+        $user             = $model->detail($kode);
         $data           = array(
             'title'     => 'Detail Anggota',
-            'user'	    => $user,
+            'user'        => $user,
             'content'   => 'user/detail'
         );
         return view('layout/wrapper', $data);
@@ -42,22 +40,34 @@ class Anggota extends BaseController
     public function profile($kode)
     {
         helper('text');
-        $model 		    = new User_model();
-        $user 	        = $model->detail($kode);
+        $model             = new User_model();
+        $user             = $model->detail($kode);
         $data           = array(
             'title'     => 'My Profile',
-            'user'	    => $user,
+            'user'        => $user,
             'content'   => 'user/profile'
         );
         return view('layout/wrapper', $data);
     }
+    public function table()
+    {
+        helper('text');
+        $model          = new User_model();
+        $user           = $model->listing();
+        $data           = array(
+            'title'     => 'My Profile',
+            'user'      => $user,
+            'content'   => 'table/data'
+        );
+        return view('table/data', $data);
+    }
     public function delete($kode)
-	{
-		// End proteksi
-		$model 	 = new User_model();
-		$user    = $model->hapus($kode);
-		return redirect()->to(base_url('nira'));
-	}
+    {
+        // End proteksi
+        $model      = new User_model();
+        $user    = $model->hapus($kode);
+        return redirect()->to(base_url('nira'));
+    }
     public function edit($kode)
     {
         helper('text');
@@ -94,9 +104,9 @@ class Anggota extends BaseController
             $model  = new Profesi_model();
             $update = $model->edit($data);
             return redirect()->to(base_url('profesi'));
-            
+
             //dd($data);
-            
+
         };
     }
 }

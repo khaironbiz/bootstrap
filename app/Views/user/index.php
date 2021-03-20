@@ -6,18 +6,7 @@
                 <p>Melihat seluruh profesi tenaga kesehatan dari sisi admin</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <form action="" method="POST">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="keyword">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="submit">Cari</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col">
                 <table class="table table-responsive text-white" style="font-size: smaller;">
@@ -34,7 +23,9 @@
                     </thead>
                     <tbody>
 
-                        <?php $no = 1 +($per_page*($currentPage-1));
+                        <?php
+                        //$no = 1 + ($per_page * ($currentPage - 1));
+                        $no = 1;
                         foreach ($user as $u) { ?>
                             <tr>
                                 <th scope="row"><?= $no ?></th>
@@ -43,14 +34,15 @@
                                 <td><?= $u['ktp']; ?></td>
                                 <td><?= $u['ruangan']; ?></td>
                                 <td><?= $u['email']; ?></td>
-                                <td><a class="btn btn-sm btn-success" href="/anggota/detail/<?= $u['kode']?>" role="button">Detail</a></td>
-                                
+                                <td><a class="btn btn-sm btn-success" href="/anggota/detail/<?= $u['kode'] ?>" role="button">Detail</a></td>
+
                             </tr>
                         <?php $no++;
                         } ?>
                     </tbody>
                 </table>
-                <?= $pager->links('nira', 'user_paginate') ?>
+                <?php //echo $pager->links('nira', 'user_paginate') 
+                ?>
             </div>
         </div>
     </div>
