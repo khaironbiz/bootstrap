@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col">
                 <div class="table-responsive">
-                    <table id="example" class="table" style="width:100%">
+                    <table id="example" class="table bg-primary" style="width:100%">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -47,10 +47,7 @@
                     $(document).ready(function() {
                         var table = $('#example').DataTable();
 
-                        $('#example tbody').on('click', 'tr', function() {
-                            var data = table.row(this).data();
-                            alert('You clicked on ' + data[0] + '\'s row');
-                        });
+
                     });
                 </script>
             </div>
