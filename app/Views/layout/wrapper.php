@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- akhir bootstrap CSS -->
     <!-- My CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.css">
@@ -25,8 +25,9 @@
     <!-- CK editor -->
     <script src="<?= base_url() ?>/assets/ckeditor/ckeditor.js"></script>
     <!-- data table -->
+
     <?php
-    if ($title == "Daftar Anggota") {
+    if ($title == "Daftar Profesi Tenaga Kesehatan") {
     ?>
         <!-- data table -->
         <link href=" https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">

@@ -1,5 +1,5 @@
 <section id="event">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row text-white">
             <div class="col text-center ">
                 <h2>DAFTAR PROFESI ANGGOTA</h2>
@@ -8,32 +8,31 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-md-8">
                 <div class="table-responsive">
                     <table id="example" class="table" style="width:100%">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">NIRA</th>
-                                <th scope="col">Pendidikan</th>
-                                <th scope="col">Ruangan</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col">Provinsi</th>
+                                <th scope="col">Kabupaten</th>
+                                <th scope="col">Kecamatan</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <?php
-                            //$no = 1 + ($per_page * ($currentPage - 1));
-                            $no = 1;
-                            foreach ($user as $u) { ?>
+                            $db         = \Config\Database::connect();
+                            $no     = 1;
+                            foreach ($provinsi as $u) {
+                                $id         = $u['id_prov'];
+                                $count_kab  = mysqli_num_rows(mysqli_query("SELECT * FROM kabupaten WHERE id_prov='$id'"));
+                            ?>
                                 <tr>
                                     <th scope="row"><?= $no ?></th>
-                                    <td><?= $u['nama']; ?></td>
-                                    <td><?= $u['nira']; ?></td>
-                                    <td><?= $u['pendidikan']; ?></td>
-                                    <td><?= $u['ruangan']; ?></td>
-                                    <td><a class="btn btn-sm btn-success" href="/anggota/detail/<?= $u['kode'] ?>" role="button">Detail</a></td>
+                                    <td><?= $u['nama_provinsi']; ?></td>
+                                    <td><?= $count_kab ?></td>
+
 
                                 </tr>
                             <?php $no++;

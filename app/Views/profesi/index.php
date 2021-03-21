@@ -9,35 +9,37 @@
         <div class="row">
             <div class="col">
                 <a class="btn btn-primary btn-sm" href="<?= base_url('profesi/add') ?>" role="button">Tambah Profesi</a>
-                <table class="table table-responsive text-white" style="font-size: smaller;">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama Profesi</th>
-                            <th scope="col">Nama Organisasi Profesi</th>
-                            <th scope="col">Nama Ketua OP</th>
-                            <th scope="col">Website</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php $no = 1;
-                        foreach ($profesi as $profesi) { ?>
+                <div class="table-responsive">
+                    <table class="table table-responsive text-white" style="font-size: smaller;">
+                        <thead>
                             <tr>
-                                <th scope="row"><?= $no ?></th>
-                                <td><?= $profesi['nama_profesi']; ?></td>
-                                <td><?= $profesi['nama_op'] . " (" . $profesi['singkatan_op'] . ")"; ?></td>
-                                <td><?= $profesi['ketua_op']; ?></td>
-                                <td><?= $profesi['web_op']; ?></td>
-                                <td><?= $profesi['email_op']; ?></td>
-                                <td><a class="btn btn-success btn-sm" href="<?= base_url('profesi/detail')."/".$profesi['has_profesi_kesehatan'];?>" role="button">Detail</a></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Profesi</th>
+                                <th scope="col">Organisasi Profesi</th>
+                                <th scope="col">Ketua OP</th>
+                                <th scope="col">Website</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Aksi</th>
                             </tr>
-                        <?php $no++;
-                        } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+
+                            <?php $no = 1;
+                            foreach ($profesi as $profesi) { ?>
+                                <tr>
+                                    <th scope="row"><?= $no ?></th>
+                                    <td><?= $profesi['nama_profesi']; ?></td>
+                                    <td><?= $profesi['nama_op'] . " (" . $profesi['singkatan_op'] . ")"; ?></td>
+                                    <td><?= $profesi['ketua_op']; ?></td>
+                                    <td><?= $profesi['web_op']; ?></td>
+                                    <td><?= $profesi['email_op']; ?></td>
+                                    <td><a class="btn btn-success btn-sm" href="<?= base_url('profesi/detail') . "/" . $profesi['has_profesi_kesehatan']; ?>" role="button">Detail</a></td>
+                                </tr>
+                            <?php $no++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
