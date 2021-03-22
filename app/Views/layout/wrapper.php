@@ -27,7 +27,7 @@
     <!-- data table -->
 
     <?php
-    if ($title == "Daftar Profesi Tenaga Kesehatan") {
+    if ($title == "Daftar Profesi Tenaga Kesehatan" or $title =="Daftar Anggota") {
     ?>
         <!-- data table -->
         <link href=" https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
