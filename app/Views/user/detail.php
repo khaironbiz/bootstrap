@@ -10,7 +10,7 @@
                                 <a class="nav-link <?php if($title =='Detail Anggota'){echo "active"; } ?>" href="#">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Anggota</a>
+                                <a class="nav-link" href="#">Iuran</a>
                             </li>
                         </ul>
                     </div>

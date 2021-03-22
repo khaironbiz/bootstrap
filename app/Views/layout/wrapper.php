@@ -74,6 +74,21 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="<?= base_url('home') ?>#contact">Contact</a>
                     </li>
+                    <?php 
+                    if(logged_in()){
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="<?= base_url('logout') ?>">Logout</a>
+                    </li>
+                    <?php 
+                    }else{
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="<?= base_url('login') ?>">Login</a>
+                    </li>
+                    <?php 
+                    }
+                    ?>
 
                 </ul>
             </div>
