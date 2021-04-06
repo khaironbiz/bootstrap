@@ -46,6 +46,13 @@ class User_model extends Model
         $query = $this->get();
         return $query->getRowArray();
     }
+    public function detail2($nira)
+    {
+        $this->select('*');
+        $this->where('nira', $nira);
+        $query = $this->get();
+        return $query->getRowArray();
+    }
 
     // Read
     public function anggota($has_profesi_kesehatan)

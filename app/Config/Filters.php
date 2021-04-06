@@ -20,8 +20,8 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
 		'login'      => \Myth\Auth\Filters\LoginFilter::class,
-    	'role'       => \Myth\Auth\Filters\RoleFilter::class,
-    	'permission' => \Myth\Auth\Filters\PermissionFilter::class,
+		'role'       => \Myth\Auth\Filters\RoleFilter::class,
+		'permission' => \Myth\Auth\Filters\PermissionFilter::class,
 	];
 
 	/**
@@ -63,6 +63,6 @@ class Filters extends BaseConfig
 	 * @var array
 	 */
 	public $filters = [
-		'login' => ['before' => ['profesi', 'anggota']],
+		'login' => ['before' => ['anggota']],
 	];
 }

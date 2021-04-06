@@ -10,7 +10,7 @@
                                 <a class="nav-link <?php if($title =='Detail Anggota'){echo "active"; } ?>" href="#">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Iuran</a>
+                                <a class="nav-link" href="<?= base_url('anggota/iuran/')."/".$user['nira']?>">Iuran</a>
                             </li>
                         </ul>
                     </div>

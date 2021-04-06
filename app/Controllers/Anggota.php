@@ -3,6 +3,7 @@
 namespace App\Controllers;
 // Load model
 use App\Models\User_model;
+Use App\Models\Iuran_model;
 
 class Anggota extends BaseController
 {
@@ -34,6 +35,21 @@ class Anggota extends BaseController
             'title'     => 'Detail Anggota',
             'user'        => $user,
             'content'   => 'user/detail'
+        );
+        return view('layout/wrapper', $data);
+    }
+    public function iuran($nira)
+    {
+        helper('text');
+        $model_user     = new User_model();
+        $user           = $model_user->detail2($nira);
+        $model          = new Iuran_model();
+        $iuran          = $model->iuran($nira);
+        $data           = array(
+            'title'     => 'Iuran Anggota',
+            'user'      => $user,
+            'iuran'     => $iuran,
+            'content'   => 'user/iuran'
         );
         return view('layout/wrapper', $data);
     }
